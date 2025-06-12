@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
 
-    private Coach anotherCoach;
+//    private Coach anotherCoach;
 
 //    Field Injection (Not recommended as its bad for testing)
 //    @Autowired
@@ -27,15 +27,15 @@ public class DemoController {
 //    Qualifier annotation to use "Basketball" as the qualifier for the DemoController
     public DemoController(
 //          This will be two different objects being injected after becoming part of the prototype scope
-            @Qualifier("BasketballCoach") Coach theCoach,
-            @Qualifier("BasketballCoach") Coach theAnotherCoach
+            @Qualifier("BasketballCoach") Coach theCoach
+//          @Qualifier("BasketballCoach") Coach theAnotherCoach
     ){
 //      This would only show the bean that gets created due to lazy loading and the DemoController:
 //      In constructor: BasketballCoach
 //      In constructor: DemoController
         System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = theCoach;
-        anotherCoach = theAnotherCoach;
+//      anotherCoach = theAnotherCoach;
     }
 
     @GetMapping("/dailyworkout")
@@ -43,9 +43,9 @@ public class DemoController {
         return myCoach.getDailyWorkout();
     }
 
-    @GetMapping("/check")
-    public String check() {
-//      Check to see if this is the same bean True or False depending on the bean scopes.
-        return "Comparing beans: myCoach == anotherCoach, " + (myCoach == anotherCoach);
-    }
+//    @GetMapping("/check")
+//    public String check() {
+////      Check to see if this is the same bean: True or False depending on the bean scopes.
+//        return "Comparing beans: myCoach == anotherCoach, " + (myCoach == anotherCoach);
+//    }
 }
