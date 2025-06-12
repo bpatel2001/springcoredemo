@@ -23,7 +23,11 @@ public class DemoController {
     //Constructor Injection (Most recommended)
     @Autowired
 //    Qualifier annotation to use "Basketball" as the qualifier for the DemoController
-    public DemoController(@Qualifier("Basketball") Coach theCoach){
+    public DemoController(@Qualifier("BasketballCoach") Coach theCoach){
+//      This would only show the bean that gets created due to lazy loading and the DemoController:
+//      In constructor: BasketballCoach
+//      In constructor: DemoController
+        System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = theCoach;
     }
 
