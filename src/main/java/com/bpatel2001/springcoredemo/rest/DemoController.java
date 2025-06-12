@@ -27,7 +27,7 @@ public class DemoController {
 //    Qualifier annotation to use "Basketball" as the qualifier for the DemoController
     public DemoController(
 //          This will be two different objects being injected after becoming part of the prototype scope
-            @Qualifier("BasketballCoach") Coach theCoach
+            @Qualifier("aquatic") Coach theCoach
 //          @Qualifier("BasketballCoach") Coach theAnotherCoach
     ){
 //      This would only show the bean that gets created due to lazy loading and the DemoController:
